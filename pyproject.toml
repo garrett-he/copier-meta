@@ -30,6 +30,9 @@ changelog = "https://github.com/garrett-he/copier-meta/blob/main/CHANGELOG.md"
 pytest = "^8.3.4"
 pytest-copie = "^0.2.0"
 
+[tool.pytest.ini_options]
+addopts = "--ignore='meta-template' -p no:warnings"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
