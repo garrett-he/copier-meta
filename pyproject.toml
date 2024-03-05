@@ -26,6 +26,10 @@ homepage = "https://github.com/garrett-he/copier-meta"
 repository = "https://github.com/garrett-he/copier-meta.git"
 changelog = "https://github.com/garrett-he/copier-meta/blob/main/CHANGELOG.md"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-copie = "^0.2.0"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
