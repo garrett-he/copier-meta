@@ -27,6 +27,7 @@ repository = "https://github.com/garrett-he/copier-meta.git"
 changelog = "https://github.com/garrett-he/copier-meta/blob/main/CHANGELOG.md"
 
 [tool.poetry.group.dev.dependencies]
+pre-commit = "^4.1.0"
 pylint = "^3.3.4"
 pytest = "^8.3.4"
 pytest-copie = "^0.2.0"
