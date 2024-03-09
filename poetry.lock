@@ -78,6 +78,21 @@ pyyaml = ">=5.3.1"
 questionary = ">=1.8.1"
 
 [[package]]
+name = "copier-templates-extensions"
+version = "0.3.0"
+description = "Special Jinja2 extension for Copier that allows to load extensions using file paths relative to the template root instead of Python dotted paths."
+optional = false
+python-versions = ">=3.7"
+groups = ["dev"]
+files = [
+    {file = "copier-templates-extensions-0.3.0.tar.gz", hash = "sha256:48b3f5213ee913b931df40e4e9325b58b9c9a741f1052a7da1b247ed991f5150"},
+    {file = "copier_templates_extensions-0.3.0-py3-none-any.whl", hash = "sha256:733e709536e03768b1201c79525534d7fd153932cf764492a0396692e513f244"},
+]
+
+[package.dependencies]
+copier = ">=6"
+
+[[package]]
 name = "deprecated"
 version = "1.2.18"
 description = "Python @deprecated decorator to deprecate old python classes, functions or methods."
@@ -992,4 +1007,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10"
-content-hash = "d2f0b849b675434f3e037f12c5f130e70f8ab53ec36fd0ebe5831de405ba4c1f"
+content-hash = "0c803c99cfcfd5118e0ff617cb92e0567d7d3eefea7b0fd7af3967c334820fd6"
