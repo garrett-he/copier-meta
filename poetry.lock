@@ -40,6 +40,17 @@ files = [
 ]
 
 [[package]]
+name = "chance"
+version = "0.110"
+description = "Minimalist generator of random strings, numbers, etc."
+optional = false
+python-versions = "*"
+groups = ["dev"]
+files = [
+    {file = "chance-0.110.tar.gz", hash = "sha256:b21944a73a7eacd3a4dfd5ba6f396de596ff9aaed0826a04d4d3bd9e9bafae63"},
+]
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
@@ -1007,4 +1018,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10"
-content-hash = "0c803c99cfcfd5118e0ff617cb92e0567d7d3eefea7b0fd7af3967c334820fd6"
+content-hash = "7a364c66a4ff839473d4c2f4404f074dddafdd72b3605a7c85f079106eb071e8"

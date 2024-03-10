@@ -27,6 +27,7 @@ repository = "https://github.com/garrett-he/copier-meta.git"
 changelog = "https://github.com/garrett-he/copier-meta/blob/main/CHANGELOG.md"
 
 [tool.poetry.group.dev.dependencies]
+chance = "^0.110"
 copier-templates-extensions = "^0.3.0"
 pre-commit = "^4.1.0"
 pylint = "^3.3.4"
