@@ -16,15 +16,18 @@ LICENSE_SPEC = {
 
 def generate_copier_answers():
     return {
+        'template_name': f'{chance.word()}-{chance.word()}',
+        'template_description': chance.sentence(),
         'copyright_license': chance.pickone(list(LICENSE_SPEC.keys())),
         'copyright_holder_name': chance.name(),
         'copyright_holder_email': chance.email(),
         'copyright_year': str(random.randint(2000, 2024)),
+        'vcs_github_path': f'{chance.word()}/{chance.word()}-{chance.word()}'.lower(),
     }
 
 
 def test_meta_template_static_files(copie: Copie):
-    result = copie.copy()
+    result = copie.copy(extra_answers=generate_copier_answers())
 
     assert result.exit_code == 0
     assert result.exception is None
@@ -64,3 +67,17 @@ def test_meta_template_licenses(copie: Copie):
                 assert not result.project_dir.joinpath('COPYING').exists()
                 assert result.project_dir.joinpath('LICENSE').exists()
                 assert not result.project_dir.joinpath('UNLICENSE').exists()
+
+        readme = result.project_dir.joinpath('README.md').read_text()
+
+        assert answers['template_name'] in readme
+        assert answers['template_description'] in readme
+        assert f'copier copy --trust gh:{answers["vcs_github_path"]}' in readme
+
+        assert license_spec['stub'] in readme
+
+        if license_id == 'Unlicense':
+            assert 'This is free and unencumbered software released into the public domain' in readme
+        else:
+            assert f'Copyright (C) {answers["copyright_year"]} {answers["copyright_holder_name"]} <{answers["copyright_holder_email"]}>' in readme
+            assert f'see [{license_spec["filename"]}](./{license_spec["filename"]}).' in readme
