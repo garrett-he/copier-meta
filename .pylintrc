@@ -1,7 +1,7 @@
 [MAIN]
 jobs=0
 suggestion-mode=yes
-disable=missing-module-docstring,missing-class-docstring,missing-function-docstring,too-few-public-methods,too-many-arguments,too-many-positional-arguments
+disable=missing-module-docstring,missing-class-docstring,missing-function-docstring,too-few-public-methods,too-many-arguments,too-many-positional-arguments,duplicate-code
 
 [BASIC]
 good-names=i,j,k,m,n,s,fp
