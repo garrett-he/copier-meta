@@ -16,3 +16,16 @@ project_description:
     {% if not project_description %}
     Project description cannot be empty.
     {% endif %}
+
+project_version:
+  type: str
+  default: "0.1.0"
+  help: "Version of this project:"
+  validator: >-
+    {% if not (project_version | regex_search('^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$')) %}
+    Project version should use Semantic Versioning 2.0.0 (MAJOR.MINOR.PATCH)
+    {% endif %}
+
+project_keywords:
+  type: str
+  help: "Keywords of this project:"

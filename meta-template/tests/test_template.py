@@ -18,6 +18,8 @@ def generate_copier_answers():
     return {
         'project_name': f'{chance.word()}-{chance.word()}',
         'project_description': chance.sentence(),
+        'project_version': f'{random.randint(0, 10)}.{random.randint(0, 10)}.{random.randint(0, 10)}',
+        'project_keywords': f'{chance.word()},{chance.word()},{chance.word()}',
         'copyright_holder_name': chance.name(),
         'copyright_holder_email': chance.email(),
         'copyright_license': chance.pickone(list(LICENSE_SPEC.keys())),
