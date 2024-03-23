@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:d94ec34c1ca82ed5c3f5eda15363a68abfb5023bf944b7533a41847dc65ef792"
+content_hash = "sha256:9a1f2f6538a9863a57b98badac7bb0e929ef045f9822fe44aff37d8c0ac5c908"
 
 [[metadata.targets]]
 requires_python = ">=3.10"
@@ -74,6 +74,20 @@ dependencies = [
 files = [
     {file = "copier-9.5.0-py3-none-any.whl", hash = "sha256:d7d9851649ad71518f8e868ab761362af0ee9008025a3f85647e9724983cf540"},
     {file = "copier-9.5.0.tar.gz", hash = "sha256:db7311075176376ee746fe610ffb5b27db7ac755585d6149894f677ffbce127d"},
+]
+
+[[package]]
+name = "copier-templates-extensions"
+version = "0.3.0"
+requires_python = ">=3.7"
+summary = "Special Jinja2 extension for Copier that allows to load extensions using file paths relative to the template root instead of Python dotted paths."
+groups = ["dev"]
+dependencies = [
+    "copier>=6",
+]
+files = [
+    {file = "copier-templates-extensions-0.3.0.tar.gz", hash = "sha256:48b3f5213ee913b931df40e4e9325b58b9c9a741f1052a7da1b247ed991f5150"},
+    {file = "copier_templates_extensions-0.3.0-py3-none-any.whl", hash = "sha256:733e709536e03768b1201c79525534d7fd153932cf764492a0396692e513f244"},
 ]
 
 [[package]]
