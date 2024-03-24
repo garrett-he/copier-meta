@@ -7,6 +7,7 @@ help: ## Show help information
 .PHONY: init
 init: ## Initialize project
 	pdm install
+	pdm run pre-commit install
 
 .PHONY: lint
 lint: ## Code analyse and lint
