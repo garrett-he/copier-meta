@@ -1,0 +1,18 @@
+---
+template_name:
+  type: str
+  default: copier-
+  help: "Name of this template:"
+  validator: >-
+    {% if not (template_name | regex_search('^copier-[a-z0-9\-]+$')) %}
+    Template name must start with "copier-", followed one or more letters, digits or hyphens all lowercase.
+    {% endif %}
+
+template_description:
+  type: str
+  help: "Description of this template:"
+  default: "A Copier template for "
+  validator: >-
+    {% if not template_description %}
+    Template description cannot be empty.
+    {% endif %}
