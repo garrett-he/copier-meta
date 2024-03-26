@@ -28,6 +28,7 @@ changelog = "https://github.com/garrett-he/copier-meta/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 dev = [
+    "chance>=0.110",
     "copier-templates-extensions>=0.3.0",
     "pre-commit>=4.1.0",
     "pylint>=3.3.4",
