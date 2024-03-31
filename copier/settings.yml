@@ -11,3 +11,4 @@ _jinja_extensions:
 
 _tasks:
   - "git init"
+  - "git remote add origin git@github.com:{{ vcs_github_path }}.git"
