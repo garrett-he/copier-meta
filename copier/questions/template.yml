@@ -16,3 +16,17 @@ template_description:
     {% if not template_description %}
     Template description cannot be empty.
     {% endif %}
+
+template_version:
+  type: str
+  default: "0.1.0"
+  help: "Version of this template:"
+  validator: >-
+    {% if not (template_version | regex_search('^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$')) %}
+    Template version should use Semantic Versioning 2.0.0 (MAJOR.MINOR.PATCH)
+    {% endif %}
+
+template_keywords:
+  type: str
+  help: "Keywords of this template:"
+  default: "copier,template,code-generation"
