@@ -28,6 +28,16 @@ def generate_copier_answers():
     }
 
 
+def get_license_file(license_id: str) -> str:
+    match license_id:
+        case 'GPL-3.0-or-later' | 'LGPL-3.0-or-later':
+            return 'COPYING'
+        case 'Unlicense':
+            return 'UNLICENSE'
+        case _:
+            return 'LICENSE'
+
+
 def test_template_static_files(copie: Copie):
     result = copie.copy(extra_answers=generate_copier_answers())
 
@@ -36,3 +46,24 @@ def test_template_static_files(copie: Copie):
     assert result.project_dir.is_dir()
 
     assert result.project_dir.joinpath('.editorconfig').exists()
+
+
+def test_template_licenses(copie: Copie):
+    for license_id, license_spec in LICENSE_SPEC.items():
+        answers = generate_copier_answers()
+        answers['copyright_license'] = license_id
+
+        result = copie.copy(extra_answers=answers)
+
+        assert result.exit_code == 0
+        assert result.exception is None
+        assert result.project_dir.is_dir()
+
+        license_text = result.project_dir.joinpath(license_spec['filename']).read_text(encoding='utf-8')
+        assert license_spec['stub'] in license_text
+
+        if license_spec['with_holder']:
+            assert f'{answers["copyright_holder_name"]} <{answers["copyright_holder_email"]}>' in license_text
+            assert answers['copyright_year'] in license_text
+
+        assert result.project_dir.joinpath(get_license_file(license_id)).exists()
