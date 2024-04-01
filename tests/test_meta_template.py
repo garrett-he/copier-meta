@@ -1,3 +1,4 @@
+import os
 import random
 
 import toml
@@ -107,3 +108,17 @@ def test_meta_template_pyproject_toml(copie: Copie):
     assert pyproject['project']['urls']['homepage'] == f"https://github.com/{answers['vcs_github_path']}"
     assert pyproject['project']['urls']['repository'] == f"https://github.com/{answers['vcs_github_path']}.git"
     assert pyproject['project']['urls']['changelog'] == f"https://github.com/{answers['vcs_github_path']}/blob/main/CHANGELOG.md"
+
+
+def test_meta_template_generation(copie: Copie):
+    answers = generate_copier_answers()
+    result = copie.copy(extra_answers=answers)
+
+    assert result.exit_code == 0
+    assert result.exception is None
+    assert result.project_dir.is_dir()
+
+    os.chdir(result.project_dir)
+    os.system('pdm install')
+
+    assert os.system('pdm run pytest') == 0
