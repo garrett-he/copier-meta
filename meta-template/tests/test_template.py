@@ -46,6 +46,7 @@ def test_template_static_files(copie: Copie):
     assert result.project_dir.is_dir()
 
     assert result.project_dir.joinpath('.editorconfig').exists()
+    assert result.project_dir.joinpath('CHANGELOG.md').exists()
 
 
 def test_template_licenses(copie: Copie):
