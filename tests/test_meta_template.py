@@ -121,4 +121,4 @@ def test_meta_template_generation(copie: Copie):
     os.chdir(result.project_dir)
     os.system('pdm install')
 
-    assert os.system('pdm run pytest') == 0
+    assert os.system('pdm run test') == 0
