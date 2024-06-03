@@ -67,3 +67,16 @@ def test_template_licenses(copie: Copie):
             assert answers['copyright_year'] in license_text
 
         assert result.project_dir.joinpath(get_license_file(license_id)).exists()
+
+        readme = result.project_dir.joinpath('README.md').read_text()
+
+        assert answers['project_name'] in readme
+        assert answers['project_description'] in readme
+
+        assert license_spec['stub'] in readme
+
+        if license_id == 'Unlicense':
+            assert 'This is free and unencumbered software released into the public domain' in readme
+        else:
+            assert f'Copyright (C) {answers["copyright_year"]} {answers["copyright_holder_name"]} <{answers["copyright_holder_email"]}>' in readme
+            assert f'see [{license_spec["filename"]}](./{license_spec["filename"]}).' in readme
