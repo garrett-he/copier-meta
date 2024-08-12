@@ -6,16 +6,16 @@ help: ## Show help information
 
 .PHONY: init
 init: ## Initialize project
-	poetry install --no-root
-	poetry run pre-commit install
+	pdm install
+	pdm run pre-commit install
 
 .PHONY: lint
 lint: ## Code analyse and lint
-	poetry run pylint --recursive=yes copier/ tests/
+	pdm run pylint --recursive=yes copier/ tests/
 
 .PHONY: test
 test: ## Run tests
-	poetry run pytest
+	pdm run pytest
 
 .PHONY: clean
 clean: ## Clean up cache files

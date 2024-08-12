@@ -119,7 +119,6 @@ def test_meta_template_generation(copie: Copie):
     assert result.project_dir.is_dir()
 
     os.chdir(result.project_dir)
-    os.system('poetry install --no-root')
+    os.system('pdm install')
 
-    assert os.system('poetry run pytest') == 0
-    os.system('poetry env remove')
+    assert os.system('pdm run pytest') == 0
