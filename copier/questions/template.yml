@@ -1,7 +1,7 @@
 ---
 template_name:
   type: str
-  default: copier-
+  default: "{{ dest_folder_name }}"
   help: "Name of this template:"
   validator: >-
     {% if not (template_name | regex_search('^copier-[a-z0-9\-]+$')) %}

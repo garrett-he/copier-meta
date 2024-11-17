@@ -8,6 +8,7 @@ _jinja_extensions:
   - copier/jinja_extensions.py:DateExtension
   - copier/jinja_extensions.py:GitExtension
   - copier/jinja_extensions.py:SlugifyExtension
+  - copier/jinja_extensions.py:ProjectExtension
 
 _tasks:
   - "git init"
