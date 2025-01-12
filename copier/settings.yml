@@ -1,0 +1,8 @@
+---
+_min_copier_version: "9"
+
+_subdirectory: "meta-template"
+
+_jinja_extensions:
+  - copier_templates_extensions.TemplateExtensionLoader
+  - copier/extensions/context.py:ContextUpdater
