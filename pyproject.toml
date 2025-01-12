@@ -1,0 +1,40 @@
+[project]
+name = "copier-meta"
+version = "0.1.0"
+description = "Meta template for Copier allows you to quickly generate specific templates."
+requires-python = ">=3.10"
+authors = [
+    { name = "Garrett HE", email = "garrett.he@outlook.com" }
+]
+readme = "README.md"
+license = { text = "BSD-3-Clause" }
+keywords = ["copier", "meta-template", "code-generation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Code Generators",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = []
+
+[project.urls]
+homepage = "https://github.com/garrett-he/copier-meta"
+repository = "https://github.com/garrett-he/copier-meta.git"
+
+[dependency-groups]
+dev = [
+    "chance>=0.110",
+    "copier-templates-extensions>=0.3.2",
+    "pre-commit>=4.3.0",
+    "pylint>=3.3.8",
+    "pytest>=8.4.1",
+    "pytest-copie>=0.2.2",
+    "toml>=0.10.2",
+]
+
+[tool.pytest.ini_options]
+addopts = "--ignore='meta-template' -p no:warnings"
