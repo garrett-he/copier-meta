@@ -5,6 +5,18 @@
 
 Meta template for [Copier][1] allows you to quickly generate specific templates.
 
+## Quickstart
+
+1. Install the latest Copier via command:
+    ```
+    pip install --user --upgrade copier copier-templates-extensions
+    ```
+
+2. Use command `copier` to generate a new project:
+    ```
+    copier copy --trust gh:garrett-he/copier-meta /path/to/destination
+    ```
+
 ## License
 
 Copyright (C) 2025 Garrett HE <garrett.he@outlook.com>
