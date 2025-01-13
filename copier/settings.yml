@@ -6,3 +6,4 @@ _subdirectory: "meta-template"
 _jinja_extensions:
   - copier_templates_extensions.TemplateExtensionLoader
   - copier/extensions/context.py:ContextUpdater
+  - copier/extensions/license.py:LicenseExtension

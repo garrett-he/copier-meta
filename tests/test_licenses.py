@@ -19,3 +19,5 @@ def test_licenses(copie):
             assert answers['copyright_year'] in license_text
 
         assert result.project_dir.joinpath(license_file).exists()
+
+        assert license_file in result.project_dir.joinpath('.editorconfig').read_text(encoding='utf-8')
