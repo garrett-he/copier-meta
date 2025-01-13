@@ -1,5 +1,8 @@
 # copier-meta
 
+![license](https://img.shields.io/github/license/garrett-he/copier-meta)
+[![test](https://github.com/garrett-he/copier-meta/actions/workflows/test.yml/badge.svg)](https://github.com/garrett-he/copier-meta/actions/workflows/test.yml)
+
 Meta template for [Copier][1] allows you to quickly generate specific templates.
 
 ## License
