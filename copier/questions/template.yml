@@ -1,0 +1,32 @@
+---
+template_name:
+  type: str
+  default: "{{ _folder_name }}"
+  help: "Name of this template:"
+  validator: >-
+    {% if not (template_name | regex_search('^copier-[a-z0-9\-]+$')) %}
+    Template name must start with "copier-", followed one or more letters, digits or hyphens all lowercase.
+    {% endif %}
+
+template_description:
+  type: str
+  help: "Description of this template:"
+  default: "A Copier template for "
+  validator: >-
+    {% if not template_description %}
+    Template description cannot be empty.
+    {% endif %}
+
+template_version:
+  type: str
+  default: "0.1.0"
+  help: "Version of this template:"
+  validator: >-
+    {% if not (template_version | regex_search('^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$')) %}
+    Template version should use Semantic Versioning 2.0.0 (MAJOR.MINOR.PATCH)
+    {% endif %}
+
+template_keywords:
+  type: str
+  help: "Keywords of this template:"
+  default: "copier,template,code-generation"

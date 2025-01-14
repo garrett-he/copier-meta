@@ -1,2 +1,11 @@
 ---
   !include copier/settings.yml
+
+---
+  !include copier/questions/template.yml
+
+---
+  !include copier/questions/copyright.yml
+
+---
+  !include copier/questions/vcs.yml

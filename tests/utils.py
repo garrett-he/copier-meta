@@ -15,8 +15,13 @@ LICENSE_SPEC = {
 
 def generate_copier_answers() -> dict:
     return {
+        'template_name': f'copier-{chance.word()}-{chance.word()}',
+        'template_description': chance.sentence(),
+        'template_version': f'{random.randint(0, 10)}.{random.randint(0, 10)}.{random.randint(0, 10)}',
+        'template_keywords': f'{chance.word()},{chance.word()},{chance.word()}',
         'copyright_license': chance.pickone(list(LICENSE_SPEC.keys())),
         'copyright_holder_name': chance.name(),
         'copyright_holder_email': chance.email(),
-        'copyright_year': str(random.randint(2000, 2024))
+        'copyright_year': str(random.randint(2000, 2024)),
+        'vcs_github_path': f'{chance.word()}/{chance.word()}-{chance.word()}'.lower(),
     }

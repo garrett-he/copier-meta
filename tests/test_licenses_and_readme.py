@@ -1,7 +1,7 @@
 from .utils import LICENSE_SPEC, generate_copier_answers
 
 
-def test_licenses(copie):
+def test_licenses_and_readme(copie):
     for license_id, license_spec in LICENSE_SPEC.items():
         answers = generate_copier_answers()
         answers['copyright_license'] = license_id
@@ -21,3 +21,17 @@ def test_licenses(copie):
         assert result.project_dir.joinpath(license_file).exists()
 
         assert license_file in result.project_dir.joinpath('.editorconfig').read_text(encoding='utf-8')
+
+        readme = result.project_dir.joinpath('README.md').read_text()
+
+        assert answers['template_name'] in readme
+        assert answers['template_description'] in readme
+        assert f'copier copy --trust gh:{answers["vcs_github_path"]}' in readme
+
+        assert license_spec['stub'] in readme
+
+        if license_id == 'Unlicense':
+            assert 'This is free and unencumbered software released into the public domain' in readme
+        else:
+            assert f'Copyright (C) {answers["copyright_year"]} {answers["copyright_holder_name"]} <{answers["copyright_holder_email"]}>' in readme
+            assert f'see [{license_file}](./{license_file}).' in readme
