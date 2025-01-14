@@ -1,0 +1,40 @@
+[project]
+name = "{{ template_name }}"
+version = "{{ template_version }}"
+description = "{{ template_description }}"
+requires-python = ">=3.10"
+authors = [
+    { name = "{{ copyright_holder_name }}", email = "{{ copyright_holder_email }}" }
+]
+readme = "README.md"
+license = { text = "{{ copyright_license }}" }
+keywords = ["{{ template_keywords.split(',') | join('", "') }}"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Code Generators",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = []
+
+[project.urls]
+homepage = "https://github.com/{{ vcs_github_path }}"
+repository = "https://github.com/{{ vcs_github_path }}.git"
+changelog = "https://github.com/{{ vcs_github_path }}/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = [
+    "chance>=0.110",
+    "copier-templates-extensions>=0.3.2",
+    "pre-commit>=4.3.0",
+    "pylint>=3.3.8",
+    "pytest>=8.4.1",
+    "pytest-copie>=0.2.2",
+]
+
+[tool.pytest.ini_options]
+addopts = "--ignore='template' -p no:warnings"
