@@ -1,9 +1,9 @@
 import toml
-from pytest_copie.plugin import Copie
+
 from .utils import generate_copier_answers
 
 
-def test_pyproject_toml(copie: Copie):
+def test_pyproject_toml(copie):
     answers = generate_copier_answers()
     result = copie.copy(extra_answers=answers)
 
