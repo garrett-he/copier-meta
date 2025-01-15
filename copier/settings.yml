@@ -7,3 +7,4 @@ _jinja_extensions:
   - copier_templates_extensions.TemplateExtensionLoader
   - copier/extensions/context.py:ContextUpdater
   - copier/extensions/license.py:LicenseExtension
+  - copier/extensions/slugify.py:SlugifyExtension
