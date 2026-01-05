@@ -87,9 +87,14 @@ def verify_license_content(
 
 
 @pytest.mark.parametrize('license_type', LICENSE_TYPES)
-def test_license_generation(copie: Copie, license_type: str) -> None:
+def test_license_generation(
+    copie: Copie,
+    base_answers: dict[str, str],
+    license_type: str,
+) -> None:
     """Test that template generates correct LICENSE for each license type."""
-    result = copie.copy(extra_answers={'copyright_license': license_type})
+    answers = {**base_answers, 'copyright_license': license_type}
+    result = copie.copy(extra_answers=answers)
 
     assert result.exit_code == 0, f'Template generation failed with exit code {result.exit_code}'
     assert result.exception is None, f'Template generation raised exception: {result.exception}'
@@ -116,9 +121,10 @@ def test_license_generation(copie: Copie, license_type: str) -> None:
     )
 
 
-def test_context_injection(copie: Copie) -> None:
+def test_context_injection(copie: Copie, base_answers: dict[str, str]) -> None:
     """Test that context.py extension injects dynamic values."""
-    result = copie.copy(extra_answers={'copyright_license': 'MIT'})
+    answers = {**base_answers, 'copyright_license': 'MIT'}
+    result = copie.copy(extra_answers=answers)
 
     assert result.exit_code == 0
     assert result.exception is None
