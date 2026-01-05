@@ -1,15 +1,15 @@
 [project]
-name = "copier-meta"
-version = "0.1.0"
-description = "A meta-template for bootstrapping new Copier project scaffolds."
+name = "{{ template_name }}"
+version = "{{ template_version }}"
+description = "{{ template_description }}"
 readme = "README.md"
-keywords = [ "code-generation", "copier", "meta-template" ]
-license = "MIT"
+keywords = [ "{{ template_keywords.split(',') | join('", "') }}" ]
+license = "{{ copyright_license }}"
 maintainers = [
-    { name = "Garrett HE", email = "garrett.he@outlook.com" },
+    { name = "{{ copyright_holder_name }}", email = "{{ copyright_holder_email }}" }
 ]
 authors = [
-    { name = "Garrett HE", email = "garrett.he@outlook.com" },
+    { name = "{{ copyright_holder_name }}", email = "{{ copyright_holder_email }}" }
 ]
 requires-python = ">=3.12"
 classifiers = [
@@ -32,11 +32,11 @@ optional-dependencies.dev = [
     "ruff>=0.15.17",
     "rumdl>=0.2.16",
 ]
-urls.Changelog = "https://github.com/garrett-he/copier-meta/blob/main/CHANGELOG.md"
-urls.Documentation = "https://github.com/garrett-he/copier-meta/blob/main/README.md"
-urls.Homepage = "https://github.com/garrett-he/copier-meta"
-urls.Issues = "https://github.com/garrett-he/copier-meta/issues"
-urls.Repository = "https://github.com/garrett-he/copier-meta.git"
+urls.Changelog = "https://github.com/{{ vcs_github_path }}/blob/main/CHANGELOG.md"
+urls.Documentation = "https://github.com/{{ vcs_github_path }}/blob/main/README.md"
+urls.Homepage = "https://github.com/{{ vcs_github_path }}"
+urls.Issues = "https://github.com/{{ vcs_github_path }}/issues"
+urls.Repository = "https://github.com/{{ vcs_github_path }}.git"
 
 [tool.ruff]
 line-length = 120
@@ -63,12 +63,6 @@ errors.unannotated-return = "error"
 errors.untyped-import = "error"
 preset = "strict"
 project-includes = [ "copier/extensions", "tests" ]
-
-[tool.pytest]
-ini_options.filterwarnings = [
-    "ignore::copier.errors.DirtyLocalWarning",
-    "ignore::DeprecationWarning",
-]
 
 [tool.rumdl]
 line-length = 120
