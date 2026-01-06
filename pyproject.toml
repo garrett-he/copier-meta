@@ -65,7 +65,8 @@ preset = "strict"
 project-includes = [ "copier/extensions", "tests" ]
 
 [tool.pytest]
-ini_options.filterwarnings = [
+addopts = [ "--ignore=meta-template" ]
+filterwarnings = [
     "ignore::copier.errors.DirtyLocalWarning",
     "ignore::DeprecationWarning",
 ]
