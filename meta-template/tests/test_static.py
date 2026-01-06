@@ -15,9 +15,9 @@ STATIC_FILES = [
 ]
 
 
-def test_static_files_generated(copie: Copie) -> None:
+def test_static_files_generated(copie: Copie, base_answers: dict[str, str]) -> None:
     """Test that all static files are generated."""
-    result = copie.copy()
+    result = copie.copy(extra_answers=base_answers)
 
     assert result.exit_code == 0
     assert result.exception is None
