@@ -2,4 +2,4 @@
 vcs_github_path:
   type: str
   help: "Path of repository on github:"
-  default: "{{ copyright_holder_name.lower().replace(' ', '-') }}/{{ project_name }}"
+  default: "{{ copyright_holder_name.lower().replace(' ', '-') }}/{{ template_name }}"

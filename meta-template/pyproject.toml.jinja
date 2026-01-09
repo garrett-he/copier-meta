@@ -64,6 +64,13 @@ errors.untyped-import = "error"
 preset = "strict"
 project-includes = [ "copier/extensions", "tests" ]
 
+[tool.pytest]
+addopts = [ "--ignore=template" ]
+filterwarnings = [
+    "ignore::copier.errors.DirtyLocalWarning",
+    "ignore::DeprecationWarning",
+]
+
 [tool.rumdl]
 line-length = 120
 disable = [
