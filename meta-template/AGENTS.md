@@ -14,7 +14,6 @@ and documentation.
 - **Type Checker**: pyrefly (strict preset)
 - **Testing**: pytest with pytest-copie
 - **Markdown Linter**: rumdl
--
 
 ## Development Commands
 
