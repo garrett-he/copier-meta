@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 def test_generated_template_structure(copie: Copie, base_answers: dict[str, str]) -> None:
     """Test that generated template has expected structure."""
-    answers = {**base_answers, 'copyright_license': 'MIT'}
+    answers = {**base_answers, 'copyright_license': 'MIT', 'with_changelog': True}
     result = copie.copy(extra_answers=answers)
 
     assert result.exit_code == 0
@@ -25,12 +25,12 @@ def test_generated_template_structure(copie: Copie, base_answers: dict[str, str]
     assert (project / 'template' / '.editorconfig').exists()
     assert (project / 'template' / '.gitattributes').exists()
     assert (project / 'template' / '.gitignore').exists()
-    assert (project / 'template' / 'CHANGELOG.md').exists()
+    assert (project / 'template' / '{% if with_changelog %}CHANGELOG.md{% endif %}').exists()
 
 
 def test_generated_template_tests_pass(copie: Copie, base_answers: dict[str, str]) -> None:
     """Test that the generated template's own tests pass."""
-    answers = {**base_answers, 'copyright_license': 'MIT'}
+    answers = {**base_answers, 'copyright_license': 'MIT', 'with_changelog': True}
     result = copie.copy(extra_answers=answers)
 
     assert result.exit_code == 0

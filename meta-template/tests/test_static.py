@@ -11,7 +11,6 @@ STATIC_FILES = [
     '.editorconfig',
     '.gitattributes',
     '.gitignore',
-    'CHANGELOG.md',
 ]
 
 

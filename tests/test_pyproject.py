@@ -116,7 +116,7 @@ def test_pyproject_license(copie: Copie, base_answers: dict[str, str]) -> None:
 
     pyproject = result.project_dir / 'pyproject.toml'
     content = pyproject.read_text()
-    assert 'license = "Apache-2.0"' in content
+    assert 'license = { text = "Apache-2.0" }' in content
 
 
 def test_pyproject_maintainers(copie: Copie, base_answers: dict[str, str]) -> None:
@@ -159,7 +159,7 @@ def test_pyproject_authors(copie: Copie, base_answers: dict[str, str]) -> None:
 
 def test_pyproject_urls(copie: Copie, base_answers: dict[str, str]) -> None:
     """Test URLs use vcs_github_path."""
-    answers = {**base_answers, 'copyright_license': 'MIT', 'vcs_github_path': 'my-org/my-repo'}
+    answers = {**base_answers, 'copyright_license': 'MIT', 'vcs_github_path': 'my-org/my-repo', 'with_changelog': True}
     result = copie.copy(extra_answers=answers)
 
     assert result.exit_code == 0
@@ -172,6 +172,33 @@ def test_pyproject_urls(copie: Copie, base_answers: dict[str, str]) -> None:
     assert 'urls.Repository = "https://github.com/my-org/my-repo.git"' in content
     assert 'urls.Changelog = "https://github.com/my-org/my-repo/blob/main/CHANGELOG.md"' in content
     assert 'urls.Documentation = "https://github.com/my-org/my-repo/blob/main/README.md"' in content
+
+
+def test_pyproject_changelog_url_when_enabled(copie: Copie, base_answers: dict[str, str]) -> None:
+    """Test urls.Changelog is present when with_changelog is True."""
+    answers = {**base_answers, 'copyright_license': 'MIT', 'with_changelog': True}
+    result = copie.copy(extra_answers=answers)
+
+    assert result.exit_code == 0
+    assert result.project_dir is not None
+
+    pyproject = result.project_dir / 'pyproject.toml'
+    content = pyproject.read_text()
+    assert 'urls.Changelog' in content
+    assert f'github.com/{answers["vcs_github_path"]}/blob/main/CHANGELOG.md' in content
+
+
+def test_pyproject_changelog_url_when_disabled(copie: Copie, base_answers: dict[str, str]) -> None:
+    """Test urls.Changelog is absent when with_changelog is False."""
+    answers = {**base_answers, 'copyright_license': 'MIT', 'with_changelog': False}
+    result = copie.copy(extra_answers=answers)
+
+    assert result.exit_code == 0
+    assert result.project_dir is not None
+
+    pyproject = result.project_dir / 'pyproject.toml'
+    content = pyproject.read_text()
+    assert 'urls.Changelog' not in content
 
 
 def test_pyproject_tool_sections(copie: Copie, base_answers: dict[str, str]) -> None:
